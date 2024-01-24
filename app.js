@@ -1,14 +1,16 @@
-let listasDeNumerosSorteados = [];
-let nuemroLimite = 10;
+let listaDeNumerosSorteados = [];
+let numeroLimite = 10;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
 function exibirTextoNaTela(tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
-    responsiveVoice.speak(texto, 'Brazil Portuguese Famele', {rate: 1.2});
+    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate:1.2});
 }
 
+exibirTextoNaTela('h1', 'Jogo do número secreto');
+exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
 function exibirMensagemInicial() {
     exibirTextoNaTela('h1', 'Jogo do número secreto');
     exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
@@ -18,7 +20,8 @@ exibirMensagemInicial();
 
 function verificarChute() {
     let chute = document.querySelector('input').value;
-    
+    console.log(chute == numeroSecreto);
+
     if (chute == numeroSecreto) {
         exibirTextoNaTela('h1', 'Parabéns, você acertou!');
         let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
@@ -37,19 +40,19 @@ function verificarChute() {
 }
 
 function gerarNumeroAleatorio() {
-    let numeroEscolhido = parseInt(Math.random() * nuemroLimite + 1);
-    let quantidadeDeElementosNaLista = listasDeNumerosSorteados.length;
+    return parseInt(Math.random() * 10 + 1);
+    let numeroEscolhido = parseInt(Math.random() * numeroLimite + 1);
+    let quantidadeDeElementosNaLista = listaDeNumerosSorteados.length;
 
-    if (quantidadeDeElementosNaLista == nuemroLimite){
-      listasDeNumerosSorteados = [];
+    if (quantidadeDeElementosNaLista == numeroLimite) {
+        listaDeNumerosSorteados = [];
     }
-
-    if (listasDeNumerosSorteados.includes(numeroEscolhido)){
-      return gerarNumeroAleatorio();
-    }else {
-      listasDeNumerosSorteados.push(numeroEscolhido);
-      console.log(listasDeNumerosSorteados);
-      return numeroEscolhido;
+    if (listaDeNumerosSorteados.includes(numeroEscolhido)) {
+        return gerarNumeroAleatorio();
+    } else {
+        listaDeNumerosSorteados.push(numeroEscolhido);
+        console.log(listaDeNumerosSorteados)
+        return numeroEscolhido;
     }
 }
 
@@ -57,6 +60,9 @@ function limparCampo() {
     chute = document.querySelector('input');
     chute.value = '';
 }
+
+
+
 
 function reiniciarJogo() {
     numeroSecreto = gerarNumeroAleatorio();
