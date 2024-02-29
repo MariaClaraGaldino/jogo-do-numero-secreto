@@ -1,4 +1,5 @@
 <h1>Jogo do número secreto</h1>
+
 <p> Projeto desenvolvido no curso da Alura para entendimento de lógica de programação e aprender a utilizar o Git e Github.</p
 
 ## 👩‍💻 Tecnologias utilizadas  
