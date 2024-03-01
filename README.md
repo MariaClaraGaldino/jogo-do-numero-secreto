@@ -17,3 +17,4 @@
 - Gera um número aleatório, quando descoberto, recomeça automaticamente
 
 ## Link do jogo
+https://jogonumerosecreto-phi.vercel.app/
